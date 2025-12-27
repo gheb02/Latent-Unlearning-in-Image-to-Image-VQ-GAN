@@ -6,3 +6,16 @@ High-fidelity vector-quantized generative models such as VQ-GAN pose safety chal
 
 
 *Warning: This research involves the analysis of explicit datasets; however, all sensitive visual content presented in this paper has been blurred or obscured to ensure the safety of the reader.*
+
+## Repository Structure
+
+
+
+## Acknowledgements
+
+This work builds upon several excellent open-source projects:
+
+- [VQ-GAN](https://github.com/CompVis/taming-transformers)
+- [NudeNet](https://github.com/notAI-tech/NudeNet)
+
+We thank the authors for making their code and data publicly available.
