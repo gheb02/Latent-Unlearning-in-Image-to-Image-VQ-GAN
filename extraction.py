@@ -1,6 +1,8 @@
 import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as T
+from torchvision import datasets, transforms
+import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 import os
@@ -8,11 +10,8 @@ from PIL import Image, ImageDraw
 import cv2
 import random
 from pathlib import Path
-from torchvision import datasets, transforms
+from collections import Counter
 
-# ============================================================================
-# 1. DATASET CLASSES
-# ============================================================================
 
 class ImageDataset(Dataset):
     """Simple image folder dataset"""
@@ -80,9 +79,6 @@ def make_balanced_subset(root, samples_per_class, seed=0):
 
     return selected_paths, selected_labels
 
-# ============================================================================
-# 3. CODE EXTRACTION
-# ============================================================================
 
 def extract_codes(model, dataloader, device='cuda', structured=True):
     """
@@ -134,14 +130,12 @@ def create_mask(detections, img_size=(256, 256), expand=0):
         dx, dy = int(w * expand), int(h * expand)
         
         # Calculate coordinates with boundary checks
-        # We cast to int() because NudeNet sometimes returns floats
         x1 = max(0, int(x - dx))
         y1 = max(0, int(y - dy))
         x2 = min(W, int(x + w + dx))
         y2 = min(H, int(y + h + dy))
         
         # Set the region to 1.0 (white)
-        # Note: PyTorch tensors use [Height, Width] indexing (y, x)
         mask[y1:y2, x1:x2] = 1.0
     
     return mask
@@ -175,10 +169,9 @@ def extract_codes_nudenet(
 
     with torch.no_grad():
         for batch_idx, batch in enumerate(dataloader):
-            # 1. Get images
             x = batch["image"].to(device)
 
-            # 2. Denormalize to [0, 1] for detection
+            # Denormalize to [0, 1] for detection
             imgs_denorm = (x * 0.5 + 0.5).clamp(0, 1)
             pil_imgs = [T.ToPILImage()(img.cpu()) for img in imgs_denorm]
 
