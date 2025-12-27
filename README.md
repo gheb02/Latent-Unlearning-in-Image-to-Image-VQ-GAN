@@ -9,7 +9,9 @@ High-fidelity vector-quantized generative models such as VQ-GAN pose safety chal
 
 ## Repository Structure
 
+## Project Report
 
+A detailed explanation of the project's methodology, experiments, results, and conclusions can be found in the 
 
 ## Acknowledgements
 
