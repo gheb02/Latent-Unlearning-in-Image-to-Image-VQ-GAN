@@ -9,9 +9,14 @@ High-fidelity vector-quantized generative models such as VQ-GAN pose safety chal
 
 ## Repository Structure
 
+- `extraction.py`: ausiliary functions for code extraction
+- `utils.py`: ausiliary functions for our experiments
+- `code_extraction.ipynb`: notebook containing the actual code extraction
+- `Experiments.ipynb`: notebook containing our experiments (also work in progress experiments)
+
 ## Project Report
 
-A detailed explanation of the project's methodology, experiments, results, and conclusions can be found in the 
+A detailed explanation of the project's methodology, experiments, results, and conclusions can be found in the [Final Project Report](<Latent Unlearning in Image to Image VQ-GAN.pdf>).
 
 ## Acknowledgements
 
