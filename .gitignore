@@ -1,0 +1,10 @@
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+__pycache__/
+.env
+.venv
+venv/
+.ipynb_checkpoints/
