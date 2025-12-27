@@ -1,1 +1,1 @@
-# VQ-GAN-Unlearning
+# Latent Unlearning in Image-to-Image VQ-GAN
